@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block breadcrumb %}
+<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '  //  ';">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard"><i class="bi bi-house-door-fill"></i> Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Account</li>
+    </ol>
+</nav>
+{% endblock breadcrumb %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ image_file }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.fname }} {{ current_user.lname }}</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+          <p class="text-secondary">
+            {% for d in current_user.udata %}
+                {% for m in d.microstore %}
+                    {{m.name}}<br>
+                    {{m.logo}}
+                {% endfor %}
+            {% endfor %}
+          </p>
+        </div>
+      </div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Account Info</legend>
+                <div class="row form-group mb-3">
+                    <div class="col-6">
+                        {{ form.email.label(class="form-control-label") }}
+                        {{ form.email(class="form-control form-control", value=current_user.email, readonly=true) }}
+                    </div>
+                </div>
+                <div class="row form-group mb-3">
+                    <div class="col-6">
+                        {{ form.fname.label(class="form-control-label") }}
+                        {% if form.fname.errors %}
+                            {{ form.fname(class="form-control form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.fname.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.fname(class="form-control form-control") }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row form-group mb-3">
+                    <div class="col-6">
+                        {{ form.lname.label(class="form-control-label") }}
+                        {% if form.lname.errors %}
+                            {{ form.lname(class="form-control form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.lname.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.lname(class="form-control form-control") }}
+                        {% endif %}
+                    </div>
+                </div>
+    
+                <div class="row form-group mb-3">
+                    <div class="col-6">
+                        {{ form.picture.label(class="form-control-label") }}<br>
+                        <div class="custom-file">
+                        {{ form.picture(class="custom-file-input", accept=".jpg,.png") }}
+                        </div>
+                        {% if form.picture.errors %}
+                            {% for error in form.picture.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>    
+                <div class="row form-group mt-3">
+                    <div class="col-6">
+                        <button class="btn btn-outline-dark btn-sm float-end" type="submit"><i class="bi bi-arrow-right-circle-fill"></i> Update</button> 
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+{% endblock content %}

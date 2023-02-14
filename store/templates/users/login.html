@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<section class="">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center h-50">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white">
+                    <div class="card-body p-5 text-center" style="border-radius: 1rem;">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <form method="POST" action="">
+                                {{ form.hidden_tag() }}
+                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                            <p class="text-white-50 mb-5">please enter your login and password</p>
+                            <div class="form-outline form-white mb-4">
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control form-control-lg",placeholder="Email") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                {% if form.password.errors %}
+                                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.password(class="form-control form-control-lg",placeholder="Password") }}
+                                {% endif %}
+                                <div class="form-check mt-1">
+                                    {{ form.remember(class="form-check-input float-start") }}
+                                    {{ form.remember.label(class="form-check-label float-start small") }}
+                                </div>
+                            </div>
+                            
+                            {{ form.submit(class="btn btn-outline-light btn-lg px-5")}}
+                            </form>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="{{ url_for('users.register') }}">No Account? Register</a></p>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="{{ url_for('users.reset_request') }}">Forgot password?</a></p>
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

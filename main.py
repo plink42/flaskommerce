@@ -6,9 +6,9 @@ import datetime
 from flask import render_template, session, request, url_for, redirect
 from sqlalchemy.sql import func
 
-from app import app
-from app import db
-from app import models
+from store import app
+from store import db
+from store import models
 
 from sqlalchemy import desc
 

@@ -1,0 +1,10 @@
+SECRET_KEY = "THIS IS SECRET"
+MYSQL_USER = 'user'
+MYSQL_PASS = 'password'
+MYSQL_SERVER = 'server'
+MYSQL_DB = 'dbname'
+MAIL_SERVER = 'mailserver'
+MAIL_PORT = 0
+MAIL_USE_SSL = True
+MAIL_USERNAME = "user@server"
+MAIL_PASSWORD = "password"
