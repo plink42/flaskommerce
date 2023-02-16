@@ -1,6 +1,8 @@
 /venv/
-/app/flaskommerce.db
 .pylintrc
 /.vscode/
 *.pyo
 *.pyc
+node_modules/
+package-lock.json
+package.json

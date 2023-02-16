@@ -1,5 +1,8 @@
 from flask import current_app
+from flask_login import UserMixin
 from store import db, login_manager
+
+import jwt
 
 from datetime import timedelta
 
@@ -146,7 +149,7 @@ class OrderDetails(db.Model):
     def __repr__(self):
         return '<OrderDetails %r>'%self.id
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255))
