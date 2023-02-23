@@ -1,11 +1,12 @@
-from flask import Flask
+from flask import Flask, g
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+from currency_symbols import CurrencySymbols
 from store.config import Config
 
-
+import os
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -18,12 +19,22 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    @app.context_processor
+    @app.context_processor 
     def store_info():
         from store.models import StoreInfo
         storeinfo = StoreInfo.query.first()
+        g.storename = storeinfo.storename
+        g.storecurrency = storeinfo.currency
+        g.storesymbol = CurrencySymbols.get_symbol(g.storecurrency)
         return dict(storename=storeinfo.storename,
-                    storeurl=storeinfo.url)
+                    storeurl=storeinfo.url,
+                    storecurrency=storeinfo.currency,
+                    categoryimages=os.path.join(app.config['IMAGE_DIR'], 'categories'),
+                    productimages=os.path.join(app.config['IMAGE_DIR'], 'products'))
+    
+    @app.template_filter()
+    def price(p):
+        return f'{g.storesymbol}{p}'
 
     db.init_app(app)
     login_manager.init_app(app)

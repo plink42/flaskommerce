@@ -15,6 +15,13 @@ class StoreInfo(db.Model):
     id = db.Column(db.Enum('1'), primary_key=True)
     storename = db.Column(db.String(200))
     url = db.Column(db.String(100))
+    currency = db.Column(db.String(3))
+    address1 = db.Column(db.String(100))
+    address2 = db.Column(db.String(100))
+    city = db.Column(db.String(50))
+    stateprovince = db.Column(db.String(50))
+    postalcode = db.Column(db.String(12))
+    country = db.Column(db.String(50))
 
 class Products(db.Model):
     __tablename__ = 'products'
@@ -24,16 +31,15 @@ class Products(db.Model):
     longdescription = db.Column(db.Text, nullable=False)
     shortdescription = db.Column(db.Text, nullable=False)
     price = db.Column(db.String(14), nullable=False)
-    retailPrice = db.Column(db.String(14), nullable=False)
+    retail = db.Column(db.String(14), nullable=False)
     weight = db.Column(db.String(14), nullable=False)
-    thumb = db.Column(db.String(255), nullable=False)
-    image = db.Column(db.String(255), nullable=False)
-    image_other = db.Column(db.String(255), nullable=False)
-    updateDate = db.Column(db.Integer)
-    categories = db.Column(db.String(255), nullable=False)
-    liveDate = db.Column(db.Integer)
+    thumb = db.Column(db.String(255), nullable=True)
+    image = db.Column(db.String(255), nullable=True)
+    imageother = db.Column(db.String(255), nullable=True)
+    updatedate = db.Column(db.Integer)
+    livedate = db.Column(db.Integer)
     stock = db.Column(db.Integer)
-    isFeatured = db.Column(db.Integer)
+    isfeatured = db.Column(db.Boolean)
 
     def __repr__(self):
         return '<Product %r>'%self.sku
@@ -93,13 +99,23 @@ class OptionGroups(db.Model):
 
     def __repr__(self):
         return '<OptionGroups %r>'%self.id
+    
+class ProductCategory(db.Model):
+    __tablename__ = 'productcategory'
+    productid = db.Column(db.Integer, primary_key=True)
+    categoryid = db.Column(db.Integer, primary_key=True)
 
 class Categories(db.Model):
     __tablename__ = 'categories'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     description = db.Column(db.Text)
-    image = db.Column(db.String(255))
+    image = db.Column(db.String(255), nullable=True)
+
+    @property
+    def prodcount(self):
+        c = ProductCategory.query.filter(ProductCategory.categoryid==self.id).count()
+        return c
 
     def __repr__(self):
         return '<Cateogries %r>'%self.name

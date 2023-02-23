@@ -18,3 +18,4 @@ class Config:
     MAIL_USE_SSL = environ.get('MAIL_USE_SSL')
     MAIL_USERNAME = environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = environ.get('MAIL_PASSWORD')
+    IMAGE_DIR = environ.get('IMAGE_DIR')

@@ -1,0 +1,128 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="w-full max-w-md">
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="w-full m-4">
+            <button type="submit" class="shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-gray-100 font-bold py-2 px-4 rounded">Save</button>
+        </div>
+        <div class="mb-4">
+            {{form.sku.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.sku(placeholder='SKU', class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.sku.errors %}
+                {% for e in form.name.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.name.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.name(placeholder='Name', class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.name.errors %}
+                {% for e in form.name.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.longdescription.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.longdescription(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.longdescription.errors %}
+                {% for e in form.longdescription.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.shortdescription.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.shortdescription(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.shortdescription.errors %}
+                {% for e in form.shortdescription.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.price.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.price(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.price.errors %}
+                {% for e in form.price.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.retail.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.retail(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.retail.errors %}
+                {% for e in form.retail.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.weight.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.weight(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.weight.errors %}
+                {% for e in form.weight.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.thumb.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.thumb(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.thumb.errors %}
+                {% for e in form.thumb.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.image.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.image(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.image.errors %}
+                {% for e in form.image.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.categories.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.categories(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline flex")}}
+            {% if form.categories.errors %}
+                {% for e in form.categories.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.livedate.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.livedate(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.livedate.errors %}
+                {% for e in form.livedate.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.stock.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.stock(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.stock.errors %}
+                {% for e in form.stock.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.isfeatured.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.isfeatured(class="relative float-left h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-[rgba(0,0,0,0.25)] bg-white outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:bg-white focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent")}}
+            {% if form.isfeatured.errors %}
+                {% for e in form.isfeatured.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock content %}

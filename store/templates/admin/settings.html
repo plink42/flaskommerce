@@ -1,0 +1,92 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="w-full max-w-md">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="w-full m-4">
+            <button type="submit" class="shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-gray-100 font-bold py-2 px-4 rounded">Save</button>
+        </div>
+        <div class="mb-4">
+            {{form.storename.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.storename(value=info.storename, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.storename.errors %}
+                {% for e in form.storename.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.url.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.url(value=info.url, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.url.errors %}
+                {% for e in form.url.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.currency.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            <div class="relative">
+                {{form.currency(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+            {{form.address1.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.address1(value=info.address1, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.address1.errors %}
+                {% for e in form.url.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.address2.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.address2(value=info.address2, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.address2.errors %}
+                {% for e in form.url.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.city.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.city(value=info.city, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.city.errors %}
+                {% for e in form.url.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.stateprovince.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.stateprovince(value=info.stateprovince, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.stateprovince.errors %}
+                {% for e in form.url.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.postalcode.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            {{form.postalcode(value=info.postalcode, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+            {% if form.postalcode.errors %}
+                {% for e in form.url.errors %}
+                    <p class="text-red-500 text-xs italic">{{e}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            {{form.country.label(class="block text-gray-700 text-sm font-bold mb-2")}}
+            <div class="relative">
+                {{form.country(value=info.country, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

@@ -16,3 +16,4 @@ def admin_required(func):
         else:
             flash(f'You do not have access to {area}. Your attempt has been logged.', 'danger')
             return redirect(url_for('errors.not_allowed'))
+    return decorated_view
